@@ -1,7 +1,7 @@
 {
   "name": "nidnum",
-  "version": "0.1.0-alpha.2",
-  "description": "National identification number",
+  "version": "0.1.0-alpha.3",
+  "description": "nidnum.js is a converter that work to compose and uncompose the national identification numbers.",
   "main": "index.js",
   "scripts": {
     "build": "gulp build",
