@@ -1,4 +1,4 @@
-# nibnum
+# nidnum
 *nidnum.js* is a converter that work to compose and uncompose the [national identification numbers][national identification number].
 
 
