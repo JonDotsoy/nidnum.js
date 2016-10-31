@@ -1,0 +1,54 @@
+{
+  "name": "nidnum",
+  "version": "0.1.0-alpha.0",
+  "description": "National identification number",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [],
+  "author": "Jonathan Delgado <hi@jon.soy>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "debug": "^2.2.0",
+    "expect.js": "^0.3.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-mocha": "^3.0.1",
+    "gulp-util": "^3.0.7",
+    "lodash": "^4.16.4",
+    "mocha": "^3.1.2"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "stage-0"
+    ]
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "debug": "^2.2.0",
+    "expect.js": "^0.3.1",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^3.0.1",
+    "gulp-util": "^3.0.7",
+    "gulp-babel": "^6.1.2",
+    "lodash": "^4.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonDotsoy/nidnum.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JonDotsoy/nidnum.js/issues"
+  },
+  "homepage": "https://github.com/JonDotsoy/nidnum.js#readme"
+}
