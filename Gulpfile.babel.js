@@ -1,4 +1,5 @@
 const gutil = require("gulp-util");
+const babel = require("gulp-babel");
 const mocha = require("gulp-mocha");
 const gulp = require("gulp");
 const log = ::gutil.log;
@@ -21,7 +22,13 @@ task("test", () => src(["tests/**/*.js"]).
 
 // Test Watch
 task("test:watch", ["test"], () => {
-
 	watch(["src/**/*.js", "tests/**/*.js"], ["test"]);
+});
 
+task("build", () => {
+	process.env.NODE_ENV = "production";
+
+	return src(["src/**/*.js"]).
+		pipe(babel()).
+		pipe(dest("."));
 });
