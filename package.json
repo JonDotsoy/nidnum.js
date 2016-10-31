@@ -27,7 +27,18 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.18.0",
+    "debug": "^2.2.0",
+    "expect.js": "^0.3.1",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^3.0.1",
+    "gulp-util": "^3.0.7",
+    "gulp-babel": "^6.1.2",
+    "lodash": "^4.16.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JonDotsoy/nidnum.js.git"
