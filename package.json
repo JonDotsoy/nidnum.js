@@ -1,7 +1,7 @@
 {
   "title": "NIDNum",
   "name": "nidnum",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.9",
   "description": "nidnum.js is a converter that work to compose and uncompose the national identification numbers.",
   "main": "nidnum.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-mocha": "^3.0.1",
     "gulp-util": "^3.0.7",
-    "gulp-version-upgrade": "file:///C:\\Users\\JonDotsoy\\Repositories\\JonDotsoy\\gulp-version-upgrade",
+    "gulp-version-upgrade": "0.1.0-alpha.1",
     "lodash": "^4.16.4",
     "mocha": "^3.1.2"
   },

@@ -35,5 +35,9 @@ task("build", () => {
 });
 
 task("a", () => src("package.json").
-	pipe(versionUpgrade())
+	pipe(versionUpgrade({
+		// prompt: true,
+		"level": "prerelease",
+	})).
+	pipe(dest("."))
 );
