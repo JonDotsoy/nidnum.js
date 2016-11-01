@@ -1,13 +1,19 @@
 {
+  "title": "NIDNum",
   "name": "nidnum",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.7",
   "description": "nidnum.js is a converter that work to compose and uncompose the national identification numbers.",
-  "main": "index.js",
+  "main": "nidnum.js",
   "scripts": {
     "build": "gulp build",
     "test": "gulp test"
   },
-  "keywords": [],
+  "keywords": [
+    "rut",
+    "run",
+    "rut/run",
+    "chilean"
+  ],
   "author": "Jonathan Delgado <hi@jon.soy>",
   "license": "MIT",
   "devDependencies": {
@@ -15,12 +21,14 @@
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.18.0",
+    "checkdigit": "^1.1.1",
     "debug": "^2.2.0",
     "expect.js": "^0.3.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-mocha": "^3.0.1",
     "gulp-util": "^3.0.7",
+    "gulp-version-upgrade": "file:///C:\\Users\\JonDotsoy\\Repositories\\JonDotsoy\\gulp-version-upgrade",
     "lodash": "^4.16.4",
     "mocha": "^3.1.2"
   },
@@ -43,7 +51,9 @@
     ],
     "env": {
       "production": {
-        "presets": ["babili"]
+        "presets": [
+          "babili"
+        ]
       }
     }
   }

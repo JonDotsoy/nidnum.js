@@ -34,25 +34,36 @@ export const compose = function ([rut, check_digit], formaterNumberWithDigites=t
  * @see https://es.wikipedia.org/wiki/Anexo:Implementaciones_para_algoritmo_de_rut#Javascript
  * @seer https://es.wikipedia.org/wiki/C%C3%B3digo_de_control#M.C3.B3dulo_11
  *
- * @param  {String|Number} T            Number associated with the RUT
+ * @param  {Number} T                   Number associated with the RUT
  * @return {String}                     Check digit
  */
-export const getCheckDigit = function (T) {
+export const checkDigit = function (_T) {
 	let
-		M=0,
-		S=1;
+		M = 0,
+		S = 1,
+		T = Math.floor(Number(_T));
+
+	if (Number.isNaN(T)) {
+		throw new Error("Number no valid to get check digit.");
+	}
 
 	for(
 		;
 		T;
-		T=Math.floor(T/10)
+		T = Math.floor(T/10)
 	) {
-		S=(S + T%10 * ( 9- M++ %6) ) % 11;
+		S = (S + T%10 * ( 9- M++ %6) ) % 11;
 	}
 
 	return S ? S - 1 : 'k';
 }
 
-export const chilean = {getCheckDigit, decompose, compose}
+export const isValid = function (rut) {
+	if (Array.isArray(rut)) {
+		return checkDigit(rut[0]) === rut[1];
+	} else {
+		const [rut, dv] = decompose(rut);
+		return checkDigit(rut) === dv;
+	}
+}
 
-export default chilean;

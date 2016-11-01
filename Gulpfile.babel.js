@@ -1,5 +1,6 @@
 const gutil = require("gulp-util");
 const babel = require("gulp-babel");
+const versionUpgrade = require("gulp-version-upgrade");
 const mocha = require("gulp-mocha");
 const gulp = require("gulp");
 const log = ::gutil.log;
@@ -32,3 +33,7 @@ task("build", () => {
 		pipe(babel()).
 		pipe(dest("."));
 });
+
+task("a", () => src("package.json").
+	pipe(versionUpgrade())
+);
