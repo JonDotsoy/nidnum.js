@@ -3,18 +3,18 @@ export const decompose = function (
   check_digit: string | null = null
 ) {
   const regexToRemoveUndesirable =
-    check_digit === null ? /([^0-9|k])/gi : /([^0-9])/g;
+    check_digit === null ? /([^0-9|k])/gi : /([^0-9])/g
 
   const regexToDecomposeRut =
-    check_digit === null ? /([0-9]+)([0-9|k])/gi : /([0-9]+)/g;
+    check_digit === null ? /([0-9]+)([0-9|k])/gi : /([0-9]+)/g
 
-  const cleanRut = rut.replace(regexToRemoveUndesirable, "");
+  const cleanRut = rut.replace(regexToRemoveUndesirable, "")
 
   const [, numberRut, DV = check_digit] =
-    regexToDecomposeRut.exec(cleanRut) ?? [];
+    regexToDecomposeRut.exec(cleanRut) ?? []
 
-  return [numberRut, DV] as [string, string];
-};
+  return [numberRut, DV] as [string, string]
+}
 
 export const compose = function (
   [rut, check_digit]: [string, string],
@@ -28,10 +28,10 @@ export const compose = function (
         .reverse()
         .join("")
         .replace(/\.$/, "")
-    : rut;
+    : rut
 
-  return `${rutFormatead}-${check_digit}`;
-};
+  return `${rutFormatead}-${check_digit}`
+}
 
 /**
  * Gets the verifier number rut
@@ -45,18 +45,18 @@ export const compose = function (
 export const checkDigit = function (_T: number | string) {
   let M = 0,
     S = 1,
-    T = Math.floor(Number(_T));
+    T = Math.floor(Number(_T))
 
   if (Number.isNaN(T)) {
-    throw new Error("Number no valid to get check digit.");
+    throw new Error("Number no valid to get check digit.")
   }
 
   for (; T; T = Math.floor(T / 10)) {
-    S = (S + (T % 10) * (9 - (M++ % 6))) % 11;
+    S = (S + (T % 10) * (9 - (M++ % 6))) % 11
   }
 
-  return S ? S - 1 : "k";
-};
+  return S ? S - 1 : "k"
+}
 
 /**
  * @param rut
@@ -64,10 +64,10 @@ export const checkDigit = function (_T: number | string) {
  */
 export const isValid = function (rut: string | [string, string]) {
   if (Array.isArray(rut)) {
-    const [rut_body, check_digit] = rut;
-    return checkDigit(rut_body) === rut[1];
+    const [rut_body, check_digit] = rut
+    return checkDigit(rut_body) === rut[1]
   } else {
-    const [rut_body, dv] = decompose(rut);
-    return checkDigit(rut_body) === dv;
+    const [rut_body, dv] = decompose(rut)
+    return checkDigit(rut_body) === dv
   }
-};
+}

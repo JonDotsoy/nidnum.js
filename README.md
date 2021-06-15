@@ -1,22 +1,22 @@
 # NIDNum
-*nidnum.js* is a converter that work to compose and uncompose the [national identification numbers][national identification number].
 
+_nidnum.js_ is a converter that work to compose and uncompose the [national identification numbers][national identification number].
 
-## Usage
+## Usage Chilean Check
 
 ```javascript
-const chilean = require("nidnum/chilean");
+const chilean = require("nidnum/chilean")
 
-console.log(chilean.isValid(""));
+console.log(chilean.isValid(""))
 ```
 
 ```javascript
-const chilean = require("nidnum/chilean");
+const chilean = require("nidnum/chilean")
 
 if (chilean.isValid(RUT)) {
-    console.log("Is valid");
+  console.log("Is valid")
 } else {
-    console.log("Not is valid");
+  console.log("Not is valid")
 }
 ```
 
