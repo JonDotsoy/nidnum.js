@@ -11,6 +11,7 @@ nidnum.js
 !.prettierrc.json
 !.github
 !.husky
+!jest.config.js
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,node
