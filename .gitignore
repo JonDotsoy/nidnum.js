@@ -9,6 +9,8 @@ nidnum.js
 *.d.ts
 *.d.ts.map
 !.prettierrc.json
+!.github
+!.husky
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,node
