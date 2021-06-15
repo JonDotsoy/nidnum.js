@@ -49,6 +49,12 @@ jspm_packages
 .node_repl_history
 *.tgz
 !chilean.js
-src/ 
 tests/ 
 Gulpfile.babel.js 
+.editorconfig
+.prettierignore
+.prettierrc.json
+commitlint.config.js
+tsconfig.json
+*.ts
+!*.d.ts
