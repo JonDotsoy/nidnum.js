@@ -3,6 +3,10 @@
   "name": "nidnum",
   "version": "1.0.0",
   "description": "nidnum.js is a converter that work to compose and uncompose the national identification numbers.",
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
   "scripts": {
     "prepare": "husky install && tsc",
     "build": "tsc",
