@@ -1,7 +1,7 @@
 {
   "title": "NIDNum",
   "name": "nidnum",
-  "version": "0.1.0-alpha.9",
+  "version": "1.0.0",
   "description": "nidnum.js is a converter that work to compose and uncompose the national identification numbers.",
   "scripts": {
     "prepare": "husky install && tsc",
