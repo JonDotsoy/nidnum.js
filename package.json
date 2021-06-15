@@ -5,7 +5,8 @@
   "description": "nidnum.js is a converter that work to compose and uncompose the national identification numbers.",
   "scripts": {
     "prepare": "husky install && tsc",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "keywords": [
     "rut",
@@ -18,9 +19,12 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@types/jest": "^26.0.23",
     "husky": "^6.0.0",
+    "jest": "^27.0.4",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.1",
+    "ts-jest": "^27.0.3",
     "typescript": "^4.3.2"
   },
   "directories": {
