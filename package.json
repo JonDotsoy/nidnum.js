@@ -11,7 +11,8 @@
     "prepare": "husky install && tsc",
     "build": "tsc",
     "test": "jest",
-    "clean": "tsc --build --clean"
+    "clean": "tsc --build --clean",
+    "release": "standard-version"
   },
   "keywords": [
     "rut",
@@ -29,6 +30,7 @@
     "jest": "^27.0.4",
     "lint-staged": "^11.0.0",
     "prettier": "^2.3.1",
+    "standard-version": "^9.3.2",
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.2"
   },
