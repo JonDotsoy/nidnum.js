@@ -10,7 +10,8 @@
   "scripts": {
     "prepare": "husky install && tsc",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "clean": "tsc --build --clean"
   },
   "keywords": [
     "rut",
