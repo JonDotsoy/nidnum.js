@@ -2,6 +2,10 @@
 
 _nidnum.js_ is a converter that work to compose and uncompose the [national identification numbers][national identification number].
 
+**national identification numbers supported:**
+
+- chilean (`nidnum/chilean`)
+
 ## Usage Chilean Check
 
 ```javascript
