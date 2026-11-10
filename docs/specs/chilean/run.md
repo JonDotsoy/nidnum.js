@@ -1,12 +1,12 @@
-# RUT chileno (Rol Único Tributario)
+# RUN chileno (Rol Único Nacional)
 
-El **RUT** (Rol Único Tributario) es el número que identifica a los contribuyentes en Chile. Fue creado por el DFL N° 3 de 1969 y lo administra el Servicio de Impuestos Internos (SII). Para las personas naturales, el RUT es el mismo número que el **RUN** (Rol Único Nacional) que asigna el Servicio de Registro Civil e Identificación, y ambos comparten el mismo formato y el mismo dígito verificador.
+El **RUN** (Rol Único Nacional) es el número que el Servicio de Registro Civil e Identificación asigna a cada persona natural en Chile. Para las personas naturales es el mismo número que el **RUT** (Rol Único Tributario), creado por el DFL N° 3 de 1969 y administrado por el Servicio de Impuestos Internos (SII), que también se asigna a personas jurídicas. RUN y RUT comparten el mismo formato y el mismo dígito verificador, así que todo lo que sigue aplica a ambos.
 
 Este documento describe el formato y la fórmula del dígito verificador que implementa `chilean.ts`.
 
 ## Formato
 
-Un RUT se compone de dos partes:
+Un RUN se compone de dos partes:
 
 | Parte | Descripción |
 | --- | --- |
@@ -23,7 +23,7 @@ XX.XXX.XXX-Y
 - El guion `-` separa el cuerpo del dígito verificador.
 - La `K` puede escribirse en mayúscula o minúscula; ambas son equivalentes.
 
-Las siguientes formas representan el mismo RUT:
+Las siguientes formas representan el mismo RUN:
 
 ```
 30.686.957-4
@@ -39,7 +39,7 @@ El dígito verificador se calcula con el algoritmo **módulo 11**.
 
 ### Fórmula
 
-Sea el cuerpo del RUT con dígitos `dₙ … d₂ d₁`, donde `d₁` es el dígito de más a la derecha.
+Sea el cuerpo del RUN con dígitos `dₙ … d₂ d₁`, donde `d₁` es el dígito de más a la derecha.
 
 1. Se asigna a cada dígito un peso, empezando por la derecha, con la serie `2, 3, 4, 5, 6, 7`. Si el número tiene más de seis dígitos, la serie vuelve a empezar en `2`:
 
@@ -77,7 +77,7 @@ Sea el cuerpo del RUT con dígitos `dₙ … d₂ d₁`, donde `d₁` es el díg
 - `S = 14 + 15 + 36 + 30 + 48 + 42 + 0 + 9 = 194`
 - `194 mod 11 = 7` (porque 11 × 17 = 187)
 - `r = 11 − 7 = 4`
-- **DV = `4`**, por lo que el RUT completo es `30.686.957-4`.
+- **DV = `4`**, por lo que el RUN completo es `30.686.957-4`.
 
 ### Caso K: 10.000.013
 
@@ -87,7 +87,7 @@ Sea el cuerpo del RUT con dígitos `dₙ … d₂ d₁`, donde `d₁` es el díg
 | Producto | 6 | 3 | 0 | 0 | 0 | 0 | 0 | 3 |
 
 - `S = 12`, `12 mod 11 = 1`, `r = 11 − 1 = 10`
-- **DV = `K`**, por lo que el RUT completo es `10.000.013-K`.
+- **DV = `K`**, por lo que el RUN completo es `10.000.013-K`.
 
 ### Caso 0: 10.000.004
 
@@ -97,7 +97,7 @@ Sea el cuerpo del RUT con dígitos `dₙ … d₂ d₁`, donde `d₁` es el díg
 | Producto | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |
 
 - `S = 11`, `11 mod 11 = 0`, `r = 11 − 0 = 11`
-- **DV = `0`**, por lo que el RUT completo es `10.000.004-0`.
+- **DV = `0`**, por lo que el RUN completo es `10.000.004-0`.
 
 ### Forma equivalente usada en `chilean.ts`
 
