@@ -7,6 +7,34 @@
     "access": "public",
     "tag": "latest"
   },
+  "exports": {
+    "./chilean": {
+      "types": "./chilean.d.ts",
+      "default": "./chilean.js"
+    },
+    "./run": {
+      "types": "./src/nums/run.d.ts",
+      "default": "./src/nums/run.js"
+    },
+    "./rut": {
+      "types": "./src/nums/run.d.ts",
+      "default": "./src/nums/run.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "chilean": [
+        "./chilean.d.ts"
+      ],
+      "run": [
+        "./src/nums/run.d.ts"
+      ],
+      "rut": [
+        "./src/nums/run.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "prepare": "husky install && tsc",
     "build": "tsc",
