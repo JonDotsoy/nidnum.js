@@ -109,6 +109,89 @@ Sea el cuerpo del RUN con dígitos `dₙ … d₂ d₁`, donde `d₁` es el díg
 | `10000013` | `"k"` |
 | `10000004` | `0` |
 
+## Operaciones
+
+Estas son las operaciones básicas sobre un RUN y la función de `chilean.ts` que implementa cada una.
+
+### Obtener el dígito verificador
+
+**Entrada:** el cuerpo del RUN, solo dígitos (sin puntos ni guion).
+**Salida:** el dígito verificador.
+
+1. Recorrer los dígitos del cuerpo de derecha a izquierda.
+2. Multiplicar cada dígito por su peso (`2, 3, 4, 5, 6, 7`, y repetir).
+3. Sumar los productos y calcular `r = 11 − (S mod 11)`.
+4. Devolver `0` si `r = 11`, `K` si `r = 10`, y `r` en otro caso.
+
+En `chilean.ts`:
+
+```ts
+import { checkDigit } from "nidnum/chilean"
+
+checkDigit(30686957)   // 4
+checkDigit("10000013") // "k"
+checkDigit("10000004") // 0
+checkDigit("30.686.957") // lanza Error: el cuerpo debe venir sin puntos
+```
+
+### Descomponer un RUN
+
+**Entrada:** un RUN escrito en cualquier forma (`30.686.957-4`, `30686957-4`, `306869574`).
+**Salida:** el par `[cuerpo, dígito verificador]`.
+
+1. Eliminar todo carácter que no sea un dígito o una `K` (puntos, guion, espacios).
+2. El último carácter es el dígito verificador y el resto es el cuerpo.
+
+Si el dígito verificador ya se conoce por separado, se eliminan todos los caracteres que no sean dígitos y el resultado completo es el cuerpo.
+
+En `chilean.ts`:
+
+```ts
+import { decompose } from "nidnum/chilean"
+
+decompose("30.686.957-4")      // ["30686957", "4"]
+decompose("10.000.013-K")      // ["10000013", "K"]
+decompose("30.686.957", "4")   // ["30686957", "4"]
+```
+
+### Formatear (componer) un RUN
+
+**Entrada:** el par `[cuerpo, dígito verificador]`.
+**Salida:** el RUN escrito como `XX.XXX.XXX-Y`.
+
+1. Agrupar los dígitos del cuerpo de a tres desde la derecha y separar los grupos con puntos (opcional).
+2. Agregar un guion y el dígito verificador.
+
+En `chilean.ts`:
+
+```ts
+import { compose } from "nidnum/chilean"
+
+compose(["30686957", "4"])        // "30.686.957-4"
+compose(["30686957", "4"], false) // "30686957-4"
+compose(["1000005", "k"])         // "1.000.005-k"
+```
+
+### Validar un RUN
+
+**Entrada:** un RUN escrito en cualquier forma, o el par `[cuerpo, dígito verificador]`.
+**Salida:** `true` si el dígito verificador corresponde al cuerpo.
+
+1. Descomponer el RUN en cuerpo y dígito verificador.
+2. Obtener el dígito verificador del cuerpo.
+3. Comparar ambos, sin distinguir entre `k` y `K`.
+
+En `chilean.ts`:
+
+```ts
+import { isValid } from "nidnum/chilean"
+
+isValid("10.000.013-k")      // true
+isValid("30.686.957-5")      // false
+```
+
+> **Nota:** hoy `isValid()` compara con igualdad estricta (`===`) el valor de `checkDigit()` (un `number` o `"k"`) contra el DV extraído del texto (un `string`). Por eso devuelve `false` para RUN válidos cuyo DV es un dígito (`isValid("30.686.957-4")`) o una `K` mayúscula (`isValid("10.000.013-K")`). La operación descrita arriba es el comportamiento esperado.
+
 ## Referencias
 
 - Servicio de Impuestos Internos, *Decreto con Fuerza de Ley N° 3 de 1969, que establece normas para la aplicación del Rol Único Tributario*: <https://www.sii.cl/pagina/jurisprudencia/dfl3rut.htm>
